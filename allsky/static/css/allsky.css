@@ -1,0 +1,77 @@
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+  background-color:#000000;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  float: center;
+  color: #6e6e6e;
+  text-decoration: none;
+  background-color: #474747;
+  border: 1px solid #474747;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  z-index: 2;
+  color: #3d3d3d;
+  background-color: #515151;
+  border-color: #474747;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 3;
+  color: #6e6e6e;
+  cursor: default;
+  background-color: #515151;
+  border-color: #515151;
+}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #6e6e6e;
+  cursor: not-allowed;
+  background-color: #474747;
+  border-color: #474747;
+}
+
+.jumbotron {
+  color: inherit;
+  background-color: #7a7a7a;
+}
+.jumbotron a {
+  color:#325278;
+}
+
+/* title */
+.navbar .navbar-brand {
+    color: #777;
+}
+.navbar .navbar-brand:hover {
+    color: #777;
+}
