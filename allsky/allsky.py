@@ -134,11 +134,11 @@ def getweather(vid):
         return 'uncertain moon'
 
     s = "The weather was %s, " %(weathersummary) +\
-        "with a daily high of %.0f and an overnight low of %.0f Fahrenheit." %(thi,tlo)
+        r"with a daily high of %.0f&deg;F and an overnight low of %.0f&deg;F. " %(thi,tlo)
 
     if 'allsky' in vid:
         # only include moon information on overnight videos
-        s += "There was a %s that night." %(moonsummary)
+        s += "There was a %s that night. " %(moonsummary)
 
     return s
 
