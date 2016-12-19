@@ -25,7 +25,7 @@ def nights():
     page = request.args.get('page', 1, type=int)
     month = getmonth(page-1,'allsky')
     pagination = Pagination(page=page, total=len(ALLFOLDERS), per_page=1,
-        inner_window=5, outer_window=5, bs_version=3 )
+        inner_window=7, outer_window=5, bs_version=3 )
     return render_template( 'allsky.html', month=month, pagination=pagination )
 
 @app.route('/days')
@@ -33,7 +33,7 @@ def days():
     page = request.args.get('page', 1, type=int)
     month = getmonth(page-1,'hamcam1')
     pagination = Pagination(page=page, total=len(ALLFOLDERS), per_page=1,
-        inner_window=5, outer_window=5, bs_version=3 )
+        inner_window=7, outer_window=5, bs_version=3 )
     return render_template( 'hamcam.html', month=month, pagination=pagination )
 
 @app.route('/video')
