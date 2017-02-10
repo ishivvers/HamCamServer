@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, url_for
 from flask_paginate import Pagination
+from werkzeug.contrib.fixers import ProxyFix
+
 from glob import glob
 from os import path
 from datetime import datetime
@@ -16,6 +18,7 @@ for f in ALLFOLDERS:
     ALLNAMES.append( date.strftime('%B %Y') )
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app)
 #############################
 # pages
 #############################
@@ -39,6 +42,11 @@ def days():
 @app.route('/video')
 def video():
     vid = request.args.get('vid', 1, type=str)
+    # record whether it's night or day
+    if 'allsky' in vid:
+        night = True
+    else:
+        night = False
     date = getday( vid )
     # include notes about image artifacts for some date ranges
     # if ('hamcam' in vid) and ((datetime(2015,10,7) <= date)&(datetime(2015,12,12) >= date)):
@@ -49,12 +57,17 @@ def video():
         note = ''
     datestr = date.strftime('%A %B %-d, %Y')
     weatherstr = getweather( vid )
-    return render_template( 'video.html', video=vid, note=note,
+    return render_template( 'video.html', video=vid, note=note, night=night,
                             datestr=datestr, weatherstr=weatherstr )
 
 @app.route('/about')
 def about():
-    return render_template( 'about.html', n=len(ALLFOLDERS) )
+    referrer = request.args.get('ref', 'n', type=str)
+    if referrer == 'd':
+        night = False
+    else:
+        night = True
+    return render_template( 'about.html', n=len(ALLFOLDERS), night=night )
 
 #############################
 # helper functions
@@ -147,4 +160,4 @@ def getweather(vid):
 # run it
 #############################
 if __name__ == '__main__':
-    app.run(port=9000, debug=True)
+    app.run(port=5000, debug=False)

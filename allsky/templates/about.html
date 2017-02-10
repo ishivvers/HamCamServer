@@ -18,7 +18,13 @@
     <!-- Bootstrap theme -->
     <link href="static/css/bootstrap-theme.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="static/css/video.css" rel="stylesheet">
+    {% if night %}
+    <link href="static/css/allsky.css" rel="stylesheet">
+    <link href="static/css/vallsky.css" rel="stylesheet">
+    {% else %}
+    <link href="static/css/hamcam.css" rel="stylesheet">
+    <link href="static/css/vhamcam.css" rel="stylesheet">
+    {% endif %}
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -30,7 +36,11 @@
   <body role="document">
 
     <!-- Fixed navbar -->
+    {% if night %}
     <nav class="navbar navbar-inverse navbar-fixed-top">
+    {% else %}
+    <nav class="navbar navbar-default navbar-fixed-top">
+    {% endif %}
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
