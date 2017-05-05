@@ -18,12 +18,6 @@ from subprocess import Popen,PIPE
 from moviepy.editor import VideoFileClip, concatenate
 from time import sleep
 
-"""
-To do:
-
- Fix cropping issue on videos between
-   ((datetime(2015,10,7) <= date)&(datetime(2015,12,12) >= date))
-"""
 
 # a custom internal error class we can call in the code
 class HamCamError(Exception):
@@ -209,8 +203,8 @@ def process_hamcam( invid, outvid=None ):
     return
 
 def pull_and_process_all( clean=False, pulllog='pullfailed.txt', proclog='procfailed.txt' ):
-    start = datetime.datetime(2011, 8, 1)
-    end = datetime.datetime(2016, 8, 1)
+    start = datetime.datetime(2016, 8, 1)
+    end = datetime.datetime(2017, 2, 1)
     day = start
     while day < end:
         print day
