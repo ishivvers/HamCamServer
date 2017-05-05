@@ -1,0 +1,5 @@
+procfailed.txt
+pullfailed.txt
+*.conf
+*.pyc
+runme.txt
